@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>suro — Information Systems, Research & Development</title>
+    <title>suro</title>
 
     <meta
         name="description"
-        content="Portfolio suro — Information Systems lecturer, researcher, developer, and data analytics enthusiast."
-    >
-
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet"
+        content="Academic and professional profile of suro — Information Systems lecturer, researcher, and developer."
     >
 
     <style>
         :root {
-            --bg: #f6f6f3;
-            --surface: #ffffff;
-            --text: #161616;
-            --muted: #6c6c68;
-            --line: #dfdfda;
+            --bg: #ffffff;
+            --surface: #f8f9fa;
+            --text: #202122;
+            --muted: #54595d;
+            --border: #eaecf0;
+            --link: #3366cc;
+            --link-hover: #2a4b8d;
+            --max-width: 1120px;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         html {
@@ -30,579 +32,645 @@
         }
 
         body {
+            margin: 0;
             background: var(--bg);
             color: var(--text);
             font-family:
-                Inter,
                 -apple-system,
                 BlinkMacSystemFont,
                 "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
                 sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
         }
 
         a {
+            color: var(--link);
             text-decoration: none;
         }
 
-        .navbar {
-            background: rgba(246, 246, 243, .9);
-            backdrop-filter: blur(12px);
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
         }
 
-        .navbar-brand {
-            font-weight: 700;
-            letter-spacing: -.03em;
+        .container {
+            width: min(calc(100% - 40px), var(--max-width));
+            margin: 0 auto;
         }
 
-        .hero {
-            min-height: 88vh;
+        header {
+            border-bottom: 1px solid var(--border);
+            background: #fff;
+        }
+
+        .nav {
+            min-height: 64px;
             display: flex;
             align-items: center;
-            padding-top: 6rem;
+            justify-content: space-between;
+            gap: 24px;
         }
 
-        .eyebrow {
-            display: inline-flex;
+        .brand {
+            color: var(--text);
+            font-weight: 650;
+            font-size: 17px;
+            letter-spacing: -0.01em;
+        }
+
+        .brand:hover {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
             align-items: center;
-            gap: .5rem;
-            font-size: .85rem;
-            font-weight: 700;
-            letter-spacing: .08em;
-            text-transform: uppercase;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        main {
+            padding: 72px 0 96px;
+        }
+
+        .intro {
+            max-width: 820px;
+            margin-bottom: 72px;
+        }
+
+        .intro-label {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2.8rem, 7vw, 5.2rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.035em;
+            margin: 0 0 26px;
+        }
+
+        .lead {
+            font-size: 20px;
+            line-height: 1.65;
+            color: #404244;
+            max-width: 780px;
+            margin: 0;
+        }
+
+        .meta {
+            display: flex;
+            gap: 10px 22px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            font-size: 14px;
             color: var(--muted);
         }
 
-        .hero h1 {
-            max-width: 950px;
-            font-size: clamp(3.4rem, 8vw, 7rem);
-            line-height: .95;
-            font-weight: 750;
-            letter-spacing: -.065em;
+        section {
+            margin-top: 76px;
         }
 
-        .hero .lead {
-            max-width: 760px;
-            font-size: clamp(1.1rem, 2vw, 1.35rem);
-            line-height: 1.7;
-            color: var(--muted);
-        }
-
-        .section {
-            padding: 7rem 0;
+        .section-heading {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 42px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
         }
 
         .section-title {
-            font-size: clamp(2.2rem, 5vw, 4.2rem);
-            line-height: 1;
-            letter-spacing: -.05em;
-            font-weight: 700;
-            max-width: 850px;
+            margin: 0;
+            font-size: 14px;
+            font-weight: 650;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .project-card {
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: 1.25rem;
-            padding: 1.7rem;
-            height: 100%;
-            transition: transform .2s ease, box-shadow .2s ease;
+        .section-content {
+            max-width: 820px;
         }
 
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 45px rgba(0, 0, 0, .06);
+        .section-content > p:first-child {
+            margin-top: 0;
         }
 
-        .project-number {
-            font-size: .8rem;
+        .research-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px 34px;
+        }
+
+        .research-item {
+            padding: 0 0 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .research-item h3 {
+            font-size: 17px;
+            font-weight: 650;
+            margin: 0 0 5px;
+        }
+
+        .research-item p {
+            margin: 0;
             color: var(--muted);
-            letter-spacing: .08em;
+            font-size: 14px;
         }
 
-        .project-card h3 {
-            margin-top: 2.5rem;
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: -.025em;
+        .entry {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
         }
 
-        .project-card p {
+        .entry:first-child {
+            padding-top: 0;
+        }
+
+        .entry-title {
+            margin: 0 0 5px;
+            font-size: 17px;
+            font-weight: 620;
+            line-height: 1.45;
+        }
+
+        .entry-title a {
+            color: var(--text);
+        }
+
+        .entry-title a:hover {
+            color: var(--link);
+        }
+
+        .entry-description {
+            margin: 0 0 8px;
             color: var(--muted);
-            line-height: 1.65;
+        }
+
+        .entry-meta {
+            display: flex;
+            gap: 8px 16px;
+            flex-wrap: wrap;
+            color: #72777d;
+            font-size: 13px;
         }
 
         .tag {
             display: inline-block;
-            padding: .35rem .65rem;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            font-size: .75rem;
-            color: var(--muted);
-            margin: .15rem;
+            padding: 2px 7px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: var(--surface);
+            color: #54595d;
         }
 
-        .focus-item {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--line);
+        .profile-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .focus-item:last-child {
-            border-bottom: 0;
-        }
-
-        .big-link {
-            font-size: clamp(2rem, 6vw, 5rem);
+        .profile-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 38px;
+            padding: 7px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #fff;
             color: var(--text);
-            letter-spacing: -.05em;
-            font-weight: 700;
-            transition: opacity .2s ease;
+            font-size: 14px;
         }
 
-        .big-link:hover {
+        .profile-link:hover {
+            background: var(--surface);
             color: var(--text);
-            opacity: .55;
+            text-decoration: none;
         }
 
         footer {
-            border-top: 1px solid var(--line);
+            border-top: 1px solid var(--border);
+            padding: 28px 0 44px;
+            color: var(--muted);
+            font-size: 13px;
         }
 
-        .small-muted {
-            font-size: .9rem;
-            color: var(--muted);
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 760px) {
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 16px 0;
+            }
+
+            .nav-links {
+                gap: 12px 18px;
+            }
+
+            main {
+                padding-top: 48px;
+            }
+
+            .section-heading {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .research-list {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                margin-top: 58px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg fixed-top border-bottom">
-    <div class="container py-2">
+<header>
+    <div class="container nav">
+        <a class="brand" href="#">suro</a>
 
-        <a class="navbar-brand" href="#">
-            suro
-        </a>
-
-        <button
-            class="navbar-toggler border-0"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNav"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mainNav">
-
-            <ul class="navbar-nav ms-auto gap-lg-3">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#projects">Projects</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#research">Research</a>
-                </li>
-
-                <li class="nav-item">
-                    <a
-                        class="nav-link"
-                        href="https://github.com/surodipoikromo"
-                        target="_blank"
-                    >
-                        GitHub ↗
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-    </div>
-</nav>
-
-
-<header class="hero">
-    <div class="container">
-
-        <div class="eyebrow mb-4">
-            Information Systems · Research · Development
-        </div>
-
-        <h1>
-            suro<br>
-        </h1>
-
-        <p class="lead mt-5 mb-4">
-            Lecturer, researcher, and developer exploring how data,
-            digital behavior, information systems, and software can
-            be transformed into useful knowledge and practical tools.
-        </p>
-
-        <div class="d-flex gap-3 flex-wrap">
-
-            <a
-                href="#projects"
-                class="btn btn-dark btn-lg px-4"
-            >
-                Explore Projects
-            </a>
-
-            <a
-                href="https://github.com/surodipoikromo"
-                target="_blank"
-                class="btn btn-outline-dark btn-lg px-4"
-            >
-                GitHub
-            </a>
-
-        </div>
-
+        <nav class="nav-links">
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#projects">Projects</a>
+            <a href="#teaching">Teaching</a>
+            <a href="#profiles">Profiles</a>
+        </nav>
     </div>
 </header>
 
+<main class="container">
 
-<section id="about" class="section bg-white">
-    <div class="container">
+    <section class="intro" style="margin-top:0;">
+        <div class="intro-label">Information Systems · Data Analytics · Digital Behavior</div>
 
-        <div class="row g-5">
+        <h1>suro</h1>
 
-            <div class="col-lg-4">
-                <div class="eyebrow">
-                    About
-                </div>
-            </div>
+        <p class="lead">
+            Lecturer and researcher in Information Systems with interests in
+            data analytics, digital behavior, information systems evaluation,
+            and research-driven software development.
+        </p>
 
-            <div class="col-lg-8">
+        <div class="meta">
+            <span>Lecturer in Information Systems</span>
+            <span>Researcher</span>
+            <span>Software & Data Projects</span>
+            <span>Indonesia</span>
+        </div>
+    </section>
 
-                <h2 class="section-title mb-5">
-                    Building at the intersection of research and technology.
-                </h2>
 
-                <div class="row g-4">
+    <section id="research">
+        <div class="section-heading">
 
-                    <div class="col-md-6">
-                        <p class="fs-5">
-                            My work is rooted in Information Systems,
-                            with interests spanning data analytics,
-                            digital behavior, research methodology,
-                            and applied software development.
+            <h2 class="section-title">Research</h2>
+
+            <div class="section-content">
+
+                <p>
+                    My research focuses on how digital traces, information systems,
+                    and operational data can be transformed into observable evidence,
+                    analytical patterns, and useful intelligence.
+                </p>
+
+                <div class="research-list">
+
+                    <div class="research-item">
+                        <h3>Information Systems</h3>
+                        <p>
+                            System success, adoption, evaluation,
+                            information quality, and digital services.
                         </p>
                     </div>
 
-                    <div class="col-md-6">
-                        <p class="text-secondary fs-5">
-                            This site collects selected research projects,
-                            experimental tools, open-source software,
-                            and learning resources developed along the way.
+                    <div class="research-item">
+                        <h3>Data Analytics</h3>
+                        <p>
+                            Analysis of structured and unstructured data
+                            for evidence-based interpretation.
+                        </p>
+                    </div>
+
+                    <div class="research-item">
+                        <h3>Digital Behavior</h3>
+                        <p>
+                            Observable behavioral signals in online
+                            platforms and digital discourse.
+                        </p>
+                    </div>
+
+                    <div class="research-item">
+                        <h3>Applied Research</h3>
+                        <p>
+                            Research-driven systems, analytics tools,
+                            and practical software artifacts.
                         </p>
                     </div>
 
                 </div>
 
             </div>
-
         </div>
-
-    </div>
-</section>
+    </section>
 
 
-<section id="projects" class="section">
-    <div class="container">
+    <section id="publications">
+        <div class="section-heading">
 
-        <div class="eyebrow mb-3">
-            Selected Projects
-        </div>
+            <h2 class="section-title">Selected Publications</h2>
 
-        <h2 class="section-title mb-5">
-            Tools, experiments, and learning projects.
-        </h2>
+            <div class="section-content">
 
-        <div class="row g-4">
+                <article class="entry">
+                    <h3 class="entry-title">
+                        Digital Nudging: A Systematic Literature Review
+                    </h3>
 
-            <div class="col-md-6 col-xl-4">
-                <a
-                    href="https://github.com/surodipoikromo/sisircelah"
-                    target="_blank"
-                    class="text-dark"
-                >
-                    <article class="project-card">
-
-                        <div class="project-number">01</div>
-
-                        <h3>SISIRCELAH</h3>
-
-                        <p>
-                            Web security assessment and vulnerability scanner
-                            designed as an accessible security analysis tool.
-                        </p>
-
-                        <div>
-                            <span class="tag">Laravel</span>
-                            <span class="tag">Security</span>
-                            <span class="tag">Web</span>
-                        </div>
-
-                    </article>
-                </a>
-            </div>
-
-
-            <div class="col-md-6 col-xl-4">
-                <a
-                    href="https://github.com/surodipoikromo/literature-review-generator"
-                    target="_blank"
-                    class="text-dark"
-                >
-                    <article class="project-card">
-
-                        <div class="project-number">02</div>
-
-                        <h3>Literature Review Generator</h3>
-
-                        <p>
-                            A research utility for discovering,
-                            organizing, and synthesizing publicly
-                            available academic literature.
-                        </p>
-
-                        <div>
-                            <span class="tag">Laravel</span>
-                            <span class="tag">Research</span>
-                            <span class="tag">Open Data</span>
-                        </div>
-
-                    </article>
-                </a>
-            </div>
-
-
-<div class="col-md-6 col-xl-4">
-    <a
-        href="https://github.com/surodipoikromo/sinta-citation-finder"
-        target="_blank"
-        class="text-dark"
-    >
-        <article class="project-card">
-
-            <div class="project-number">03</div>
-
-            <h3>SINTA Citation Finder</h3>
-
-            <p>
-                A lightweight utility for collecting and
-                searching citation information associated
-                with Indonesian SINTA publications.
-            </p>
-
-            <div>
-                <span class="tag">Python</span>
-                <span class="tag">SQLite</span>
-                <span class="tag">Academic Data</span>
-            </div>
-
-        </article>
-    </a>
-</div>
-
-
-            <div class="col-md-6 col-xl-4">
-                <a
-                    href="https://github.com/surodipoikromo/demo-indobertindak"
-                    target="_blank"
-                    class="text-dark"
-                >
-                    <article class="project-card">
-
-                        <div class="project-number">04</div>
-
-                        <h3>IndoBERTindak Demo</h3>
-
-                        <p>
-                            Interactive demonstration for exploring
-                            behavioral signal classification in
-                            Indonesian digital discourse.
-                        </p>
-
-                        <div>
-                            <span class="tag">NLP</span>
-                            <span class="tag">IndoBERT</span>
-                            <span class="tag">Gradio</span>
-                        </div>
-
-                    </article>
-                </a>
-            </div>
-
-
-            <div class="col-md-6 col-xl-4">
-                <a
-                    href="https://github.com/surodipoikromo/media-belajar-flutter"
-                    target="_blank"
-                    class="text-dark"
-                >
-                    <article class="project-card">
-
-                        <div class="project-number">05</div>
-
-                        <h3>Media Belajar Flutter</h3>
-
-                        <p>
-                            Learning resource for introducing
-                            mobile programming concepts and
-                            Flutter development.
-                        </p>
-
-                        <div>
-                            <span class="tag">Flutter</span>
-                            <span class="tag">Education</span>
-                        </div>
-
-                    </article>
-                </a>
-            </div>
-
-
-<div class="col-md-6 col-xl-4">
-    <a
-        href="https://github.com/surodipoikromo/media-pembelajaran-pemrograman-web"
-        target="_blank"
-        class="text-dark"
-    >
-        <article class="project-card">
-
-            <div class="project-number">06</div>
-
-            <h3>Programming Web Learning Media</h3>
-
-            <p>
-                Open web-based learning material combining
-                programming concepts, practical exercises,
-                quizzes, glossary, and playground.
-            </p>
-
-            <div>
-                <span class="tag">Web</span>
-                <span class="tag">Bootstrap</span>
-                <span class="tag">Learning</span>
-            </div>
-
-        </article>
-    </a>
-</div>
-
-        </div>
-
-    </div>
-</section>
-
-
-<section id="research" class="section bg-white">
-    <div class="container">
-
-        <div class="row g-5">
-
-            <div class="col-lg-4">
-                <div class="eyebrow">
-                    Research
-                </div>
-            </div>
-
-            <div class="col-lg-8">
-
-                <h2 class="section-title mb-5">
-                    Research interests.
-                </h2>
-
-                <div class="focus-item">
-                    <h3 class="h4">Information Systems</h3>
-                    <p class="text-secondary mb-0">
-                        Digital systems, adoption, evaluation,
-                        information quality, and organizational use.
+                    <p class="entry-description">
+                        Review of research developments, approaches, and emerging
+                        directions in digital nudging.
                     </p>
-                </div>
 
-                <div class="focus-item">
-                    <h3 class="h4">Data Analytics & Intelligence</h3>
-                    <p class="text-secondary mb-0">
-                        Transforming digital traces and operational
-                        data into interpretable patterns and actionable insight.
-                    </p>
-                </div>
+                    <div class="entry-meta">
+                        <span>2025</span>
+                        <span>Systematic Literature Review</span>
+                        <span>Information Systems</span>
+                    </div>
+                </article>
 
-                <div class="focus-item">
-                    <h3 class="h4">Digital Behavior</h3>
-                    <p class="text-secondary mb-0">
-                        Observable behavioral signals in online
-                        discussions, platforms, and digital services.
-                    </p>
-                </div>
+                <article class="entry">
+                    <h3 class="entry-title">
+                        Big Data Analytics: A Systematic Literature Review
+                    </h3>
 
-                <div class="focus-item">
-                    <h3 class="h4">Applied Software Development</h3>
-                    <p class="text-secondary mb-0">
-                        Research-driven tools, educational systems,
-                        analytics platforms, and practical web applications.
+                    <p class="entry-description">
+                        Literature synthesis examining research themes and developments
+                        in big data analytics.
                     </p>
+
+                    <div class="entry-meta">
+                        <span>2025</span>
+                        <span>Systematic Literature Review</span>
+                        <span>Data Analytics</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projects">
+        <div class="section-heading">
+
+            <h2 class="section-title">Open Projects</h2>
+
+            <div class="section-content">
+
+                <article class="entry">
+                    <h3 class="entry-title">
+                        <a
+                            href="https://github.com/surodipoikromo/sisircelah"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            SISIRCELAH ↗
+                        </a>
+                    </h3>
+
+                    <p class="entry-description">
+                        Web security assessment and vulnerability scanner.
+                    </p>
+
+                    <div class="entry-meta">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Security</span>
+                        <span class="tag">Web</span>
+                    </div>
+                </article>
+
+
+                <article class="entry">
+                    <h3 class="entry-title">
+                        <a
+                            href="https://github.com/surodipoikromo/literature-review-generator"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Literature Review Generator ↗
+                        </a>
+                    </h3>
+
+                    <p class="entry-description">
+                        Research utility for discovering, organizing,
+                        and synthesizing public academic literature.
+                    </p>
+
+                    <div class="entry-meta">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">Research</span>
+                        <span class="tag">Open Data</span>
+                    </div>
+                </article>
+
+
+                <article class="entry">
+                    <h3 class="entry-title">
+                        <a
+                            href="https://github.com/surodipoikromo/sinta-citation-finder"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            SINTA Citation Finder ↗
+                        </a>
+                    </h3>
+
+                    <p class="entry-description">
+                        Lightweight utility for collecting and searching citation
+                        information associated with Indonesian SINTA publications.
+                    </p>
+
+                    <div class="entry-meta">
+                        <span class="tag">Python</span>
+                        <span class="tag">SQLite</span>
+                        <span class="tag">Academic Data</span>
+                    </div>
+                </article>
+
+
+                <article class="entry">
+                    <h3 class="entry-title">
+                        <a
+                            href="https://github.com/surodipoikromo/demo-indobertindak"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            IndoBERTindak Demo ↗
+                        </a>
+                    </h3>
+
+                    <p class="entry-description">
+                        Interactive demonstration for behavioral signal classification
+                        in Indonesian digital discourse.
+                    </p>
+
+                    <div class="entry-meta">
+                        <span class="tag">NLP</span>
+                        <span class="tag">IndoBERT</span>
+                        <span class="tag">Gradio</span>
+                    </div>
+                </article>
+
+
+                <article class="entry">
+                    <h3 class="entry-title">
+                        <a
+                            href="https://github.com/surodipoikromo/media-belajar-flutter"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Media Belajar Flutter ↗
+                        </a>
+                    </h3>
+
+                    <p class="entry-description">
+                        Open learning resource for introducing mobile programming
+                        and Flutter development.
+                    </p>
+
+                    <div class="entry-meta">
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Education</span>
+                    </div>
+                </article>
+
+
+                <article class="entry">
+                    <h3 class="entry-title">
+                        <a
+                            href="https://github.com/surodipoikromo/media-pembelajaran-pemrograman-web"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Programming Web Learning Media ↗
+                        </a>
+                    </h3>
+
+                    <p class="entry-description">
+                        Open web-based learning material combining programming
+                        concepts, practical exercises, quizzes, glossary, and playground.
+                    </p>
+
+                    <div class="entry-meta">
+                        <span class="tag">Web</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">Learning</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="teaching">
+        <div class="section-heading">
+
+            <h2 class="section-title">Teaching</h2>
+
+            <div class="section-content">
+
+                <p>
+                    Teaching activities cover foundational and applied topics in
+                    Information Systems and Computer Science, including databases,
+                    algorithms, software engineering, programming, computer graphics,
+                    multimedia, mathematical logic, and research methodology.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="profiles">
+        <div class="section-heading">
+
+            <h2 class="section-title">Academic Profiles</h2>
+
+            <div class="section-content">
+
+                <div class="profile-links">
+
+                    <a
+                        class="profile-link"
+                        href="https://github.com/surodipoikromo"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        GitHub ↗
+                    </a>
+
+                    <a
+                        class="profile-link"
+                        href="https://huggingface.co/surodipoikromo"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Hugging Face ↗
+                    </a>
+
                 </div>
 
             </div>
+        </div>
+    </section>
 
+</main>
+
+
+<footer>
+    <div class="container footer-inner">
+
+        <div>
+            © 2026 suro
         </div>
 
-    </div>
-</section>
-
-
-<section class="section">
-    <div class="container">
-
-        <div class="eyebrow mb-4">
-            Elsewhere
-        </div>
-
-        <div class="d-flex flex-column align-items-start">
-
-            <a
-                class="big-link"
-                href="https://github.com/surodipoikromo"
-                target="_blank"
-            >
-                GitHub ↗
-            </a>
-
-        </div>
-
-    </div>
-</section>
-
-
-<footer class="py-4">
-    <div class="container">
-
-        <div class="d-flex justify-content-between flex-wrap gap-3">
-
-            <div class="small-muted">
-                © 2026 suro
-            </div>
-
-            <div class="small-muted">
-                Research · Teaching · Building
-            </div>
-
+        <div>
+            Information Systems · Research · Data · Software
         </div>
 
     </div>
 </footer>
-
-
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
-</script>
 
 </body>
 </html>
